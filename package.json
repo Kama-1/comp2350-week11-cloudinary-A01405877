@@ -16,6 +16,7 @@
 		"mongodb": "^4.17.2",
 		"multer": "^2.0.2",
 		"mysql2": "^3.16.0",
+		"nodemon": "^3.1.14",
 		"uuid": "^13.0.0"
 	},
 	"author": "Patrick",
