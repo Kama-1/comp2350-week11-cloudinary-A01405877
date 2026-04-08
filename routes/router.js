@@ -270,42 +270,39 @@ router.get('/deleteUser', async (req, res) => {
 });
 
 router.get('/deleteUserImage', async (req, res) => {
-	try { // TODO
-		console.log("delete pet image");
-
-		let pet_id = req.query.id;
-		let user_id = req.query.user;
+	try {
+		console.log("delete user image");
+		let user_id = req.query.id;
 
 		const schema = Joi.object(
 			{
-				user_id: Joi.string().alphanum().min(24).max(24).required(),
-				pet_id: Joi.string().alphanum().min(24).max(24).required(),
+				user_id: Joi.string().alphanum().min(24).max(24).required()
 			});
 
-		const validationResult = schema.validate({user_id, pet_id});
+		const validationResult = schema.validate({user_id});
 
 		if (validationResult.error != null) {
 			console.log(validationResult.error);
 
-			res.render('error', {message: 'Invalid user_id or pet_id'});
+			res.render('error', {message: 'Invalid user_id'});
 			return;
 		}
 
-		if (pet_id) {
-			console.log("petId: "+pet_id);
-			const success = await petCollection.updateOne({"_id": new ObjectId(pet_id)},
+		if (user_id) {
+			console.log("userID: "+user_id);
+			const success = await userCollection.updateOne({"_id": new ObjectId(user_id)},
 				{$set: {image_id: undefined}},
 				{}
 			);
 
-			console.log("delete Pet Image: ");
+			console.log("delete User Image: ");
 			console.log(success);
 			if (!success) {
 				res.render('error', {message: 'Error connecting to MySQL'});
 				return;
 			}
 		}
-		res.redirect(`/showPets?id=${user_id}`);
+		res.redirect(`/`);
 	}
 	catch(ex) {
 		res.render('error', {message: 'Error connecting to MySQL'});
