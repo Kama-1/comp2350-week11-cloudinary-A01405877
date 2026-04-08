@@ -4,7 +4,7 @@ const database = include('databaseConnectionMongoDB');
 var ObjectId = require('mongodb').ObjectId;
 
 const crypto = require('crypto');
-const {v4: uuid} = import('uuid');
+const {v4: uuid} = require('uuid');
 
 const cloudinary = require('cloudinary');
 cloudinary.config({ 

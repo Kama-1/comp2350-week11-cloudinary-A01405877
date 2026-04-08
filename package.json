@@ -17,7 +17,7 @@
 		"multer": "^2.0.2",
 		"mysql2": "^3.16.0",
 		"nodemon": "^3.1.14",
-		"uuid": "^13.0.0"
+		"uuid": "^11.1.0"
 	},
 	"author": "Patrick",
 	"license": "ISC"
